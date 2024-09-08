@@ -38,9 +38,9 @@ export function DividendInfo() {
   const renderDividendList = (data: DividendData[], dateType: 'ex_date' | 'payable_date') => (
     <ul className="space-y-4">
       {data.map((item) => (
-        <li key={item.symbol} className="flex items-center space-x-4 p-4 bg-secondary rounded-lg">
+        <li key={item.symbol} className="flex items-center space-x-4 p-4 bg-secondary">
           <Avatar className="w-10 h-10 rounded-full overflow-hidden">
-            <AvatarImage src={getImageUrl(item.symbol)} alt={`${item.symbol} logo`} className="object-cover" />
+            <AvatarImage src={getImageUrl(item.symbol)} alt={`${item.symbol} logo`} className="object-cover rounded-lg" />
             <AvatarFallback className="bg-primary text-primary-foreground">
               {item.symbol[0]}
             </AvatarFallback>
@@ -73,14 +73,15 @@ export function DividendInfo() {
   return (
     <Card className="w-full max-w-3xl mx-auto">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center">Próximos Dividendos</CardTitle>
-        <p className="text-center text-muted-foreground">Fechas Ex Dividendos en el próximo mes</p>
+        <CardTitle className="text-2xl font-bold text-center">Fechas Ex Dividendos</CardTitle>
+        <p className="text-center text-muted-foreground">En el próximo mes</p>
       </CardHeader>
       <CardContent>
         {renderDividendList(sortedByExDate, 'ex_date')}
       </CardContent>
       <CardHeader>
-        <p className="text-center text-muted-foreground">Fechas de pago en el próximo mes</p>
+        <CardTitle className="text-2xl font-bold text-center">Fechas de Pago</CardTitle>
+        <p className="text-center text-muted-foreground">En el próximo mes</p>
       </CardHeader>
       <CardContent>
         {renderDividendList(sortedByPayableDate, 'payable_date')}
