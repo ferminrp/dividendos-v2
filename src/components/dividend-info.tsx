@@ -1,7 +1,6 @@
 'use client'
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import Image from "next/image"
 import { useEffect, useState } from "react"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
@@ -33,10 +32,6 @@ export function DividendInfo() {
     return `https://uokihdagbfiaicipggkz.supabase.co/storage/v1/object/public/finance_logos/${ticker}.svg`
   }
 
-  const getFallbackImageUrl = (ticker: string) => {
-    return `https://static.savvytrader.com/logos/${ticker}.webp`
-  }
-
   const sortedByExDate = [...dividendData].sort((a, b) => new Date(a.ex_date).getTime() - new Date(b.ex_date).getTime())
   const sortedByPayableDate = [...dividendData].sort((a, b) => new Date(a.payable_date).getTime() - new Date(b.payable_date).getTime())
 
@@ -44,15 +39,10 @@ export function DividendInfo() {
     <ul className="space-y-4">
       {data.map((item) => (
         <li key={item.symbol} className="flex items-center space-x-4 p-4 bg-secondary rounded-lg">
-          <Avatar className="w-10 h-10">
-            <AvatarImage src={getImageUrl(item.symbol)} alt={`${item.symbol} logo`} />
-            <AvatarFallback>
-              <Image
-                src={getFallbackImageUrl(item.symbol)}
-                alt={`${item.symbol} logo`}
-                width={40}
-                height={40}
-              />
+          <Avatar className="w-10 h-10 rounded-full overflow-hidden">
+            <AvatarImage src={getImageUrl(item.symbol)} alt={`${item.symbol} logo`} className="object-cover" />
+            <AvatarFallback className="bg-primary text-primary-foreground">
+              {item.symbol[0]}
             </AvatarFallback>
           </Avatar>
           <div className="flex-grow">
