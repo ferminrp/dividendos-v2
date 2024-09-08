@@ -47,7 +47,7 @@ export function DividendInfo() {
   const renderDividendList = (data: DividendData[], dateType: 'ex_date' | 'payable_date') => (
     <ul className="space-y-4">
       {data.map((item) => (
-        <li key={item.symbol} className="flex items-center space-x-4 p-4 bg-secondary dark:bg-gray-800">
+        <li key={item.symbol} className="flex items-center space-x-4 p-4 bg-secondary rounded-lg dark:bg-gray-800">
           <Avatar className="w-10 h-10 rounded-full overflow-hidden">
             <AvatarImage src={getImageUrl(item.symbol)} alt={`${item.symbol} logo`} className="object-cover rounded-lg" />
             <AvatarFallback className="bg-primary text-primary-foreground rounded-lg">
