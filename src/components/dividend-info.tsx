@@ -43,12 +43,12 @@ export function DividendInfo() {
     <ul className="space-y-4">
       {data.map((item) => (
         <li key={item.symbol} className="flex items-center space-x-4 p-4 bg-secondary rounded-lg">
-          <div className="w-10 h-10 relative flex-shrink-0 rounded-full overflow-hidden">
+          <div className="w-10 h-10 relative flex-shrink-0 rounded-full overflow-hidden bg-background">
             <Image
               src={getImageUrl(item.symbol)}
               alt={`${item.symbol} logo`}
               fill
-              style={{ objectFit: 'cover' }}
+              className="rounded-full object-cover"
               onError={(e) => {
                 const target = e.target as HTMLImageElement
                 target.onerror = null
