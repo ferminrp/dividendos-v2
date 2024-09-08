@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 interface DividendData {
   ex_date: string
@@ -43,19 +44,17 @@ export function DividendInfo() {
     <ul className="space-y-4">
       {data.map((item) => (
         <li key={item.symbol} className="flex items-center space-x-4 p-4 bg-secondary rounded-lg">
-          <div className="w-10 h-10 relative flex-shrink-0 rounded-full overflow-hidden bg-background">
-            <Image
-              src={getImageUrl(item.symbol)}
-              alt={`${item.symbol} logo`}
-              fill
-              className="rounded-full object-cover"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement
-                target.onerror = null
-                target.src = getFallbackImageUrl(item.symbol)
-              }}
-            />
-          </div>
+          <Avatar className="w-10 h-10">
+            <AvatarImage src={getImageUrl(item.symbol)} alt={`${item.symbol} logo`} />
+            <AvatarFallback>
+              <Image
+                src={getFallbackImageUrl(item.symbol)}
+                alt={`${item.symbol} logo`}
+                width={40}
+                height={40}
+              />
+            </AvatarFallback>
+          </Avatar>
           <div className="flex-grow">
             <div className="flex justify-between items-baseline">
               <h3 className="text-lg font-semibold">
