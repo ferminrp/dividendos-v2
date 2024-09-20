@@ -5,6 +5,8 @@ import { ThemeProvider } from 'next-themes';
 import { GoogleAnalytics } from '@next/third-parties/google'
 import Head from 'next/head';
 import { Analytics } from "@vercel/analytics/react"
+import { OpenpanelComponent } from '@openpanel/nextjs';
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -56,6 +58,10 @@ export default function RootLayout({
       </body>
       <GoogleAnalytics gaId="G-BSLD4GPVWG" />
       <Analytics/>
+      <OpenpanelComponent
+        clientId="your-client-id"
+        trackScreenViews={true}
+      />
     </html>
   );
 }
