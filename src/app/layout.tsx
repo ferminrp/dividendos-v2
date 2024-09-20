@@ -59,7 +59,7 @@ export default function RootLayout({
       <GoogleAnalytics gaId="G-BSLD4GPVWG" />
       <Analytics/>
       <OpenPanelComponent
-        clientId="your-client-id"
+        clientId="c34efa05-a221-46ce-b3b5-fdae6801bca2"
         trackScreenViews={true}
       />
     </html>
